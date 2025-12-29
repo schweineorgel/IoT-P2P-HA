@@ -1,0 +1,13 @@
+# Home Assistant
+homeassistant/.storage/
+homeassistant/*.db
+homeassistant/*.log
+homeassistant/secrets.yaml
+
+# ESPHome
+esphome/.build/
+esphome/.cache/
+esphome/secrets.yaml
+
+# General
+*.log

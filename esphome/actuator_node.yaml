@@ -1,0 +1,221 @@
+esphome:
+  name: actuator_node
+  friendly_name: actuator_node
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "In4v7cZX/CN1R5IekubZY4A+eQ61MlXM3qiQ8qT1zcw="
+
+ota:
+  - platform: esphome
+    password: "21be2cf10146e0a892ca6e5841286dd1"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Esp32-B Fallback Hotspot"
+    password: "lthZsv3IvxjD"
+
+globals:
+  - id: lux_remote
+    type: float
+    restore_value: true
+    initial_value: '0.0'
+
+  - id: presence_remote
+    type: bool
+    restore_value: true
+    initial_value: 'false'
+
+  - id: relay_state
+    type: bool
+    restore_value: true
+    initial_value: 'false'
+
+  - id: relay_state1
+    type: bool
+    restore_value: true
+    initial_value: 'false'
+
+  - id: relay_state2
+    type: bool
+    restore_value: true
+    initial_value: 'false'
+ 
+  - id: relay_state3
+    type: bool
+    restore_value: true
+    initial_value: 'false'
+    
+  - id: relay_state4
+    type: bool
+    restore_value: true
+    initial_value: 'false'
+
+  - id: manual_override
+    type: bool
+    restore_value: false
+    initial_value: 'false'
+
+espnow:
+  peers: !secret peer_mac_sensor
+  on_receive: 
+    address: !secret peer_mac_sensor
+    then:
+      - lambda: |-
+          if (!id(manual_override)){
+            std::string msg((char*)data, 3);
+            if (msg == "ONN") {
+              id(presence_remote) = true;
+              ESP_LOGD("espnow", "Presencia: ON");
+            } else if (msg == "OFF") {
+              id(presence_remote) = false;
+              ESP_LOGD("espnow", "Presencia: OFF");
+            } else {
+              uint16_t lux = (uint16_t)data[0] | ((uint16_t)data[1] << 8);
+              id(lux_remote) = (float)lux;
+              ESP_LOGD("espnow", "Lux recibido: %u", lux);
+            }
+          
+            if (id(presence_remote) && id(lux_remote) < 100 && !id(relay_state)) {
+              id(relay_state) = true;
+              id(relay_output1).turn_on();
+              id(relay_output2).turn_on();
+              id(relay_output3).turn_on();
+              id(relay_output4).turn_on();
+              id(relay_state1) = id(relay_state2) = id(relay_state3) = id(relay_state4) = true;
+              ESP_LOGD("espnow", "Reles encendidos");
+            } else if (!id(presence_remote) && id(relay_state)) {
+              id(relay_state) = false;
+              id(relay_output1).turn_off();
+              id(relay_output2).turn_off();
+              id(relay_output3).turn_off();
+              id(relay_output4).turn_off();
+              id(relay_state1) = id(relay_state2) = id(relay_state3) = id(relay_state4) = false;
+              ESP_LOGD("espnow", "Reles apagados");
+            } 
+          }
+output:
+  - platform: gpio
+    pin: GPIO33
+    id: relay_output1
+  - platform: gpio
+    pin: GPIO25
+    id: relay_output2
+  - platform: gpio
+    pin: GPIO26
+    id: relay_output3
+  - platform: gpio
+    pin: GPIO27
+    id: relay_output4
+
+switch:
+  - platform: template
+    name: "Override Relé"
+    id: override_relay
+    optimistic: false
+    turn_on_action:
+      - lambda: |-
+          id(manual_override) = true;
+          ESP_LOGD("relay_all", "Override activado");
+    turn_off_action:
+      - lambda: |-
+          id(manual_override) = false;
+          ESP_LOGD("relay_all", "Override desactivado");
+          if (id(presence_remote) && id(lux_remote) < 100) {
+            id(relay_output1).turn_on();
+            id(relay_output2).turn_on();
+            id(relay_output3).turn_on();
+            id(relay_output4).turn_on();
+            id(relay_state1) = id(relay_state2) = id(relay_state3) = id(relay_state4) = true;
+            id(relay_state) = true;
+          }
+    lambda: |-
+      return id(manual_override);
+
+button:
+  - platform: template
+    name: "Estado Relé 1"
+    id: relay_1
+    on_press:
+      - lambda: |-
+          if(id(manual_override))
+            if(id(relay_state1)) {
+              id(relay_output1).turn_off();
+              id(relay_state1) = false;
+              ESP_LOGD("relay_1", "Apagado manualmente");
+            } else {
+              id(relay_output1).turn_on();
+              id(relay_state1) = true;
+              ESP_LOGD("relay_1", "Encendido manualmente");
+            }
+            
+  - platform: template
+    name: "Estado Relé 2"
+    id: relay_2
+    on_press:
+      - lambda: |-
+          if(id(manual_override))
+            if(id(relay_state2)) {
+              id(relay_output2).turn_off();
+              id(relay_state2) = false;
+              ESP_LOGD("relay_2", "Apagado manualmente");
+            } else {
+              id(relay_output2).turn_on();
+              id(relay_state2) = true;
+              ESP_LOGD("relay_2", "Encendido manualmente");
+            }
+            
+  - platform: template
+    name: "Estado Relé 3"
+    id: relay_3
+    on_press:
+      - lambda: |-
+          if(id(manual_override))
+            if(id(relay_state3)) {
+              id(relay_output3).turn_off();
+              id(relay_state3) = false;
+              ESP_LOGD("relay_3", "Apagado manualmente");
+            } else {
+              id(relay_output3).turn_on();
+              id(relay_state3) = true;
+              ESP_LOGD("relay_3", "Encendido manualmente");
+            }
+            
+  - platform: template
+    name: "Estado Relé 4"
+    id: relay_4
+    on_press:
+      - lambda: |-
+          if(id(manual_override))
+            if(id(relay_state4)) {
+              id(relay_output4).turn_off();
+              id(relay_state4) = false;
+              ESP_LOGD("relay_4", "Apagado manualmente");
+            } else {
+              id(relay_output4).turn_on();
+              id(relay_state4) = true;
+              ESP_LOGD("relay_4", "Encendido manualmente");
+            }
+binary_sensor:
+  - platform: template
+    name: "Relay Status"
+    id: relay_status
+    lambda: |-
+      return id(relay_state);
+    device_class: power
+
+captive_portal:
+    
