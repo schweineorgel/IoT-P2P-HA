@@ -52,7 +52,7 @@ controlar de forma más precisa la corriente de excitación del optoacoplador (M
 Para ello, se utilizó el LED indicador, que opera con corrientes del orden de
 microamperes, junto con un transistor conectado en paralelo, actuando como una
 etapa de control de corriente hacia el MOC, equivalente a una resistencia
-variable, jugando con el hFE del transistor.
+variable, aprovechando las características de ganancia (hFE) del transistor..
 
 Esta solución fue implementada y validada en tres SSR independientes, obteniendo
 corrientes de activación muy similares entre unidades, lo que permitió confirmar
