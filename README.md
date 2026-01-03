@@ -1,3 +1,6 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Status](https://img.shields.io/badge/status-stable-green)
+
 # Sistema IoT descentralizado con ESP32 y ESP-NOW
 
 Sistema de automatización doméstica diseñado para operar de forma autónoma,
