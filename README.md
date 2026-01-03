@@ -11,8 +11,7 @@ ESP32 mediante ESP-NOW, sin dependencia de red Wi-Fi ni broker central.
 
 ## Alcance del repositorio y estructura de diseño
 
-Este repositorio documenta el proceso completo de diseño, prototipado e
-iteración de un sistema IoT descentralizado con ESP32 y ESP-NOW.
+Este repositorio documenta el proceso completo de diseño, prototipado, validación experimental e iteración de un sistema IoT descentralizado con ESP32 y ESP-NOW.
 
 Los módulos incluidos pueden encontrarse en distintos estados de abstracción:
 - Versiones finales con esquemáticos y diseños PCB.
