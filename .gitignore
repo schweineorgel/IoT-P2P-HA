@@ -11,3 +11,4 @@ esphome/secrets.yaml
 
 # General
 *.log
+hardware/sensor_pcb/kicad/Sensores-backups/Sensores-2026-01-03_155557.zip
