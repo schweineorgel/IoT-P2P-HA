@@ -137,6 +137,34 @@ El sistema está compuesto por dos ESP32 independientes que se comunican entre s
 Uno de ellos actúa como nodo sensor, equipado con radar mmWave para detección de presencia y un sensor de luminosidad.
 El segundo funciona como nodo actuador e integra un SSR diseñado en KiCad para el control seguro de carga eléctrica.
 
+## Demostraciones en video
+
+A continuación se incluyen videos demostrativos del funcionamiento real del
+sistema en condiciones de uso, con el hardware y firmware descritos en este
+repositorio.
+
+### Control manual (override)
+
+En este video se muestra el funcionamiento del nodo actuador cuando el sistema
+se encuentra en modo *override*, permitiendo la conmutación manual de los SSR
+desde Home Assistant.
+
+El control manual no interfiere con la lógica distribuida del sistema y puede
+habilitarse o deshabilitarse sin afectar la comunicación ESP-NOW entre nodos.
+
+![Ver video: Control manual del nodo actuador](assets/demostracion_manual.mp4)
+
+### Detección de presencia y activación automática
+
+Este video muestra la detección de presencia mediante radar mmWave en el nodo
+sensor y la posterior activación automática del nodo actuador bajo condiciones
+de baja luminosidad.
+
+La decisión se toma de forma local en el nodo sensor y se comunica al nodo
+actuador mediante ESP-NOW, sin dependencia de red Wi-Fi ni servidor central.
+
+![Ver video: Detección de presencia y activación automática](assets/demostracion_automatico.mp4)
+
 ### Home Assistant
 ![Home Assistant dashboard](assets/homeassistant_dashboard.jpeg)
 
