@@ -1,6 +1,6 @@
 ## Diseño PCB
 
-![PCB - Vista superior](screenshots/ssr_sch.png)
+![PCB - Vista superior](screenshots/ssr_pcb_sch.png)
 ![PCB - Vista inferior](screenshots/ssr_pcb.png)
 
 > **Nota sobre el esquemático final**  
