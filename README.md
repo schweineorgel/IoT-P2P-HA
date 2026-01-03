@@ -152,7 +152,7 @@ desde Home Assistant.
 El control manual no interfiere con la lógica distribuida del sistema y puede
 habilitarse o deshabilitarse sin afectar la comunicación ESP-NOW entre nodos.
 
-![Ver video: Control manual del nodo actuador](assets/demostracion_manual.mp4)
+[![Control manual del nodo actuador](https://img.youtube.com/vi/FyrNp5YLqkk/0.jpg)](https://youtu.be/FyrNp5YLqkk)
 
 ### Detección de presencia y activación automática
 
@@ -163,7 +163,7 @@ de baja luminosidad.
 La decisión se toma de forma local en el nodo sensor y se comunica al nodo
 actuador mediante ESP-NOW, sin dependencia de red Wi-Fi ni servidor central.
 
-![Ver video: Detección de presencia y activación automática](assets/demostracion_automatico.mp4)
+[![Detección de presencia y activación automática](https://img.youtube.com/vi/x1b7EXLiUZI/0.jpg)](https://youtu.be/x1b7EXLiUZI)
 
 ### Home Assistant
 ![Home Assistant dashboard](assets/homeassistant_dashboard.jpeg)
