@@ -21,7 +21,7 @@ El repositorio cumple con módulos independientes, cada uno con su propio
 README, donde se documentan explícitamente:
 
 - El propósito del diseño.
-- Su nivel de abstracción (esquemático completo, PCB-only, placa de interconexión).
+- Su nivel de abstracción (esquemático completo y/o diseño PCB).
 - Su relación con la implementación física real.
 - Decisiones de diseño relevantes y limitaciones conocidas.
 
