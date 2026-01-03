@@ -56,7 +56,7 @@ controlar de forma más precisa la corriente de excitación del optoacoplador (M
 Para ello, se utilizó el LED indicador, que opera con corrientes del orden de
 microamperes, junto con un transistor conectado en paralelo, actuando como una
 etapa de control de corriente hacia el MOC, equivalente a una resistencia
-variable, aprovechando las características de ganancia (hFE) del transistor..
+variable, aprovechando las características de ganancia (hFE) del transistor.
 
 Esta solución fue implementada y validada en tres SSR independientes, obteniendo
 corrientes de activación muy similares entre unidades, lo que permitió confirmar
@@ -89,11 +89,11 @@ El segundo funciona como nodo actuador e integra un SSR diseñado en KiCad para 
 ### Home Assistant
 ![Home Assistant dashboard](assets/homeassistant_dashboard.jpeg)
 
-Home Assistant se utiliza como capa de supervisión y control manual (override),
-sin actuar como punto único de fallo del sistema.
-
 > Las capturas de pantalla corresponden al servidor de Home Assistant
 > ejecutándose en Docker sobre un MacBook Air A1465 utilizado como host de pruebas.
+
+Home Assistant se utiliza como capa de supervisión y control manual (override),
+sin actuar como punto único de fallo del sistema.
 
 En el dashboard, el nodo **esp32-a** corresponde al nodo sensor, donde se
 visualiza el estado de presencia detectada y el nivel de luminosidad ambiental
