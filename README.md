@@ -7,8 +7,48 @@ Sistema de automatización doméstica diseñado para operar de forma autónoma,
 segura y tolerante a fallos, utilizando comunicación peer-to-peer entre nodos
 ESP32 mediante ESP-NOW, sin dependencia de red Wi-Fi ni broker central.
 
-Este repositorio prioriza la documentación del proceso de diseño y las
-decisiones de ingeniería por sobre la replicación directa del sistema.
+## Alcance del repositorio y estructura de diseño
+
+Este repositorio documenta el proceso completo de diseño, prototipado e
+iteración de un sistema IoT descentralizado con ESP32 y ESP-NOW.
+
+Los módulos incluidos pueden encontrarse en distintos estados de abstracción:
+- Versiones finales con esquemáticos y diseños PCB.
+- Placas de interconexión (solo PCB) orientadas a exponer pines físicos.
+- Versiones preliminares o simplificadas utilizadas durante el proceso de
+  validación experimental.
+
+Cada módulo se documenta en su propio directorio dentro de `hardware/`,
+incluyendo:
+- El propósito funcional.
+- Nivel de abstracción (esquemático completo, solo PCB, placa de interconexión).
+- Relación entre diseño y la implementación física real.
+- Decisiones de diseño relevantes y limitaciones conocidas.
+
+La estructura general del directorio `hardware/` es la siguiente:
+
+```
+hardware/
+├── nodemcu_sensor_pcb
+├── nodemcu_ssr_pcb
+├── sensor_pcb
+└── ssr_pcb
+```
+Cada uno de estos directorios incluye su propio README detallado.
+
+## Cómo leer este repositorio
+
+Este repositorio no está orientado a la reproducción directa del sistema,
+sino a la comprensión del proceso de diseño y validación.
+
+Se recomienda el siguiente orden de lectura:
+
+1. README principal (este archivo), para entender la arquitectura general.
+2. Directorio `hardware/`, donde cada módulo cuenta con un README específico.
+3. Directorios de firmware y configuración (ESPHome / Home Assistant), según interés.
+
+Cada módulo de hardware debe interpretarse como una unidad independiente,
+con su propio contexto, alcance y nivel de madurez.
 
 ## Arquitectura general
 
@@ -123,6 +163,15 @@ la habitación, desactivándose automáticamente al cesar dicha condición.
 ![ESPHome nodes](assets/esphome_nodes.jpeg)
 
 ESPHome se emplea para la configuración y el monitoreo de los nodos ESP32.
+
+## Estado del proyecto
+
+El sistema se encuentra en un estado funcional y estable a nivel experimental.
+No se contemplan nuevas funcionalidades mayores en el corto plazo, aunque
+podrían realizarse mejoras menores o ajustes documentales.
+
+El repositorio tiene como objetivo principal servir como referencia técnica
+del proceso de diseño, prototipado e iteración de un sistema IoT descentralizado.
 
 ## Tecnologías aplicadas
 ESP32 | ESPHome | ESP-NOW | Home Assistant | Docker | Debian 12 | KiCad | YAML
