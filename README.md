@@ -7,6 +7,9 @@ Sistema de automatización doméstica diseñado para operar de forma autónoma,
 segura y tolerante a fallos, utilizando comunicación peer-to-peer entre nodos
 ESP32 mediante ESP-NOW, sin dependencia de red Wi-Fi ni broker central.
 
+Este repositorio prioriza la documentación del proceso de diseño y las
+decisiones de ingeniería por sobre la replicación directa del sistema.
+
 ## Arquitectura general
 
 El sistema está compuesto por nodos ESP32 que toman decisiones localmente y
@@ -42,7 +45,6 @@ Esta configuración permite limitar la corriente suministrada al optoacoplador
 (MOC), evitando la sobrecarga de los pines GPIO del ESP32 y manteniendo corrientes
 de activación seguras, cercanas a los 9 mA por cada SSR activo.
 
-
 ### Desarrollo del SSR
 
 El diseño inicial del SSR se basó en ingeniería inversa de un módulo comercial
@@ -76,6 +78,15 @@ de red, se optó por migrar a ESP-NOW.
 El uso de comunicación peer-to-peer permitió reducir la latencia, eliminar
 dependencias externas y garantizar la operación local del sistema ante caídas
 de red o del servidor de supervisión.
+
+## Fabricación de prototipos
+
+Los prototipos de las placas PCB fueron diseñados en KiCad y posteriormente
+fabricados mediante fresado CNC a partir de G-code generado con FlatCAM.
+
+Este enfoque permitió iterar sobre el diseño del SSR, validar
+cambios eléctricos en hardware real y ajustar parámetros de corriente y
+activación sin depender de servicios externos de fabricación.
 
 ## Hardware – Implementación real
 
