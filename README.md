@@ -9,57 +9,32 @@ ESP32 mediante ESP-NOW, sin dependencia de red Wi-Fi ni broker central.
 
 ## Alcance del repositorio y estructura de diseño
 
-Este repositorio documenta el proceso de diseño, prototipado e iteración de un
-sistema IoT descentralizado basado en ESP32 y ESP-NOW.
+Este repositorio documenta el proceso completo de diseño, prototipado e
+iteración de un sistema IoT descentralizado con ESP32 y ESP-NOW.
 
-No todos los diseños incluidos representan implementaciones finales o
-productivas. En varios casos, los archivos corresponden a versiones
-preliminares, iterativas o simplificadas, utilizadas como apoyo al proceso de
-validación experimental.
+Los módulos incluidos pueden encontrarse en distintos estados de abstracción:
+- Versiones finales con esquemáticos y diseños PCB.
+- Placas de interconexión (solo PCB) orientadas a exponer pines físicos.
+- Versiones preliminares o simplificadas utilizadas durante el proceso de
+  validación experimental.
 
-El repositorio cumple con módulos independientes, cada uno con su propio
-README, donde se documentan explícitamente:
-
-- El propósito del diseño.
-- Su nivel de abstracción (esquemático completo y/o diseño PCB).
-- Su relación con la implementación física real.
+Cada módulo se documenta en su propio directorio dentro de `hardware/`,
+incluyendo:
+- El propósito funcional.
+- Nivel de abstracción (esquemático completo, solo PCB, placa de interconexión).
+- Relación entre diseño y la implementación física real.
 - Decisiones de diseño relevantes y limitaciones conocidas.
 
-La documentación de hardware del sistema se concentra en el directorio `hardware/`,
-donde cada módulo cuenta con su propio README explicando el propósito del diseño,
-las decisiones de ingeniería y su relación con la implementación física real.
-
-La estructura general es la siguiente:
+La estructura general del directorio `hardware/` es la siguiente:
 
 ```
 hardware/
 ├── nodemcu_sensor_pcb
-│   ├── fabrication
-│   ├── kicad/
-│   ├── screenshots/
-│   └── README.md
-│
 ├── nodemcu_ssr_pcb
-│   ├── fabrication
-│   ├── kicad/
-│   ├── screenshots/
-│   └── README.md
-│
-│
 ├── sensor_pcb
-│   ├── fabrication
-│   ├── kicad/
-│   ├── screenshots/
-│   └── README.md
-│
-│
-├── ssr_pcb
-│   ├── fabrication
-│   ├── kicad/
-│   ├── screenshots/
-│   └── README.md
-
+└── ssr_pcb
 ```
+Cada uno de estos directorios incluye su propio README detallado.
 
 ## Cómo leer este repositorio
 
