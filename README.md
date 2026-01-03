@@ -189,5 +189,14 @@ la habitación, desactivándose automáticamente al cesar dicha condición.
 
 ESPHome se emplea para la configuración y el monitoreo de los nodos ESP32.
 
+## Estado del proyecto
+
+El sistema se encuentra en un estado funcional y estable a nivel experimental.
+No se contemplan nuevas funcionalidades mayores en el corto plazo, aunque
+podrían realizarse mejoras menores o ajustes documentales.
+
+El repositorio tiene como objetivo principal servir como referencia técnica
+del proceso de diseño, prototipado e iteración de un sistema IoT descentralizado.
+
 ## Tecnologías aplicadas
 ESP32 | ESPHome | ESP-NOW | Home Assistant | Docker | Debian 12 | KiCad | YAML
