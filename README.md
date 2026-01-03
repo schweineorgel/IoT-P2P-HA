@@ -202,5 +202,13 @@ podrían realizarse mejoras menores o ajustes documentales.
 El repositorio tiene como objetivo principal servir como referencia técnica
 del proceso de diseño, prototipado e iteración de un sistema IoT descentralizado.
 
+## Colaboración
+
+El diseño del hardware, el desarrollo del firmware y la documentación del
+sistema fueron realizados por el autor de este repositorio.
+
+El ensamblaje y la soldadura de los prototipos fueron realizados con el apoyo
+de un colaborador durante la etapa de prototipado.
+
 ## Tecnologías aplicadas
 ESP32 | ESPHome | ESP-NOW | Home Assistant | Docker | Debian 12 | KiCad | YAML
