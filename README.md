@@ -7,8 +7,73 @@ Sistema de automatización doméstica diseñado para operar de forma autónoma,
 segura y tolerante a fallos, utilizando comunicación peer-to-peer entre nodos
 ESP32 mediante ESP-NOW, sin dependencia de red Wi-Fi ni broker central.
 
-Este repositorio prioriza la documentación del proceso de diseño y las
-decisiones de ingeniería por sobre la replicación directa del sistema.
+## Alcance del repositorio y estructura de diseño
+
+Este repositorio documenta el proceso de diseño, prototipado e iteración de un
+sistema IoT descentralizado basado en ESP32 y ESP-NOW.
+
+No todos los diseños incluidos representan implementaciones finales o
+productivas. En varios casos, los archivos corresponden a versiones
+preliminares, iterativas o simplificadas, utilizadas como apoyo al proceso de
+validación experimental.
+
+El repositorio cumple con módulos independientes, cada uno con su propio
+README, donde se documentan explícitamente:
+
+- El propósito del diseño.
+- Su nivel de abstracción (esquemático completo, PCB-only, placa de interconexión).
+- Su relación con la implementación física real.
+- Decisiones de diseño relevantes y limitaciones conocidas.
+
+La documentación de hardware del sistema se concentra en el directorio `hardware/`,
+donde cada módulo cuenta con su propio README explicando el propósito del diseño,
+las decisiones de ingeniería y su relación con la implementación física real.
+
+La estructura general es la siguiente:
+
+```
+hardware/
+├── nodemcu_sensor_pcb
+│   ├── fabrication
+│   ├── kicad/
+│   ├── screenshots/
+│   └── README.md
+│
+├── nodemcu_ssr_pcb
+│   ├── fabrication
+│   ├── kicad/
+│   ├── screenshots/
+│   └── README.md
+│
+│
+├── sensor_pcb
+│   ├── fabrication
+│   ├── kicad/
+│   ├── screenshots/
+│   └── README.md
+│
+│
+├── ssr_pcb
+│   ├── fabrication
+│   ├── kicad/
+│   ├── screenshots/
+│   └── README.md
+
+```
+
+## Cómo leer este repositorio
+
+Este repositorio no está orientado a la reproducción directa del sistema,
+sino a la comprensión del proceso de diseño y validación.
+
+Se recomienda el siguiente orden de lectura:
+
+1. README principal (este archivo), para entender la arquitectura general.
+2. Directorio `hardware/`, donde cada módulo cuenta con un README específico.
+3. Directorios de firmware y configuración (ESPHome / Home Assistant), según interés.
+
+Cada módulo de hardware debe interpretarse como una unidad independiente,
+con su propio contexto, alcance y nivel de madurez.
 
 ## Arquitectura general
 
