@@ -30,16 +30,17 @@ comportamiento del circuito.
 
 > En la imagen se observan dos PCBs del SSR diseñado en KiCad: una vista frontal
 > y una vista posterior.
-> En la cara posterior se aprecia la etapa de control basada en un transistor,
-> cuya resistencia en la base permite regular la amplificación de corriente en el
-> colector, junto a un LED indicador conectado en paralelo para señalización de
-> activación.
-> El emisor del transistor se conecta a tierra mediante un bypass implementado
-> con una resistencia de 0 Ω.
->
-> Esta configuración permite limitar la corriente suministrada al optoacoplador
-> (MOC), evitando la sobrecarga de los pines GPIO del ESP32 y manteniendo corrientes
-> de activación seguras, cercanas a los 9 mA por cada SSR activo.
+
+En la cara posterior se aprecia la etapa de control basada en un transistor,
+cuya resistencia en la base permite regular la amplificación de corriente en el
+colector, junto a un LED indicador conectado en paralelo para señalización de
+activación.
+El emisor del transistor se conecta a tierra mediante un bypass implementado
+con una resistencia de 0 Ω.
+
+Esta configuración permite limitar la corriente suministrada al optoacoplador
+(MOC), evitando la sobrecarga de los pines GPIO del ESP32 y manteniendo corrientes
+de activación seguras, cercanas a los 9 mA por cada SSR activo.
 
 
 ### Desarrollo del SSR
@@ -93,6 +94,19 @@ sin actuar como punto único de fallo del sistema.
 
 > Las capturas de pantalla corresponden al servidor de Home Assistant
 > ejecutándose en Docker sobre un MacBook Air A1465 utilizado como host de pruebas.
+
+En el dashboard, el nodo **esp32-a** corresponde al nodo sensor, donde se
+visualiza el estado de presencia detectada y el nivel de luminosidad ambiental
+medido en lux.
+
+El nodo **esp32-b** corresponde al nodo actuador. Desde este se permite el
+control manual de hasta cuatro SSR independientes cuando el modo *override*
+está habilitado. En modo automático, los SSR se activan de forma simultánea
+cuando el nodo sensor (**esp32-a**) envía un token de activación al detectar
+presencia bajo condiciones de baja luminosidad.
+
+Los SSR permanecen activos mientras se mantenga la detección de presencia en
+la habitación, desactivándose automáticamente al cesar dicha condición.
 
 ### ESPHome
 ![ESPHome nodes](assets/esphome_nodes.jpeg)
