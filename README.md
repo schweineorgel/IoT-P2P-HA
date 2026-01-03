@@ -10,7 +10,7 @@ Uno de ellos actúa como nodo sensor, equipado con radar mmWave para detección 
 El segundo funciona como nodo actuador e integra un SSR diseñado en KiCad para el control seguro de carga eléctrica.
 
 ### Home Assistant
-![Home Assistant dashboard](assets/homeassistant_dashboard.jpg)
+![Home Assistant dashboard](assets/homeassistant_dashboard.jpeg)
 
 Home Assistant se utiliza como capa de supervisión y control manual (override),
 sin actuar como punto único de fallo del sistema.
@@ -19,7 +19,7 @@ sin actuar como punto único de fallo del sistema.
 > ejecutándose en Docker sobre un MacBook Air A1465 utilizado como host de pruebas.
 
 ### ESPHome
-![ESPHome nodes](assets/esphome_nodes.jpg)
+![ESPHome nodes](assets/esphome_nodes.jpeg)
 
 ESPHome se emplea para la configuración y el monitoreo de los nodos ESP32.
 
